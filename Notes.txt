@@ -1,0 +1,6 @@
+Install Node 
+Check : c:> node --version
+Check : c:> npm --version
+Install NPX -> c:> npm install npx 
+create new project 
+npx create-react-app tmone
