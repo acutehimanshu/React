@@ -12,10 +12,20 @@ You can use Visual Studio code
 
 if we use const [aaa,bbb] = React.useState("Title"); 
 then we have to use function in place of class for components
+
+by default main componenet render two times (due to strict mode)
+if you disabled StrictMode in index.js page it will render one times
+but we will go for StrictMode mode, in development mode it render two time, 
+1ts time validate the code
+2nd time render the code 
+but in development mode it will work once only there will not validation in production.
+rerender happend when state changes
 ----------------------------------------------------------------
 Lecture 1: Basics of React, Intro of Components
 Lecture 2: Table Listing with Passing values to component 
 Lecture 3: Passing values between the components (* V IMP Lecture)
 Lecture 4: Data passing from one component to other, search in the list of students and assignment
 Lecture 5: React Hooks (state)
+Lecture 6: Component Rendering and page Rendering
+------------------------------------------------------------------
 
