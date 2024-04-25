@@ -30,6 +30,7 @@ Lecture 6: Component Rendering and page Rendering
 Lecture 7 : Oracle/Maria DB installation - installation  oracle (U: system, p: root)
 Lecture 8: conditional Component view and data listing.
 Lecture 9: Component designing top to bottom and buttons play 
+Lecture 10: 
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -42,3 +43,16 @@ connection = await oracle.getConnection({
 
 connection string might be like sqlplus hr/hr@//localhost:1521/xepdb1
 -----------------------------------------------------------------------
+
+browser have app component that give work to Data feture (Data services) then that service will send request to server (backend or database)
+then father start working (takes some time) in mean time what app component will do? 
+should he in wait mode? 
+-- 
+
+-------------
+Amit place order to Bobby to make car with address to deliver 
+
+bobby take some time to prapare car (take long time )
+then he will deliver to given address of amit. 
+
+in mean time ankit can perform any task. 
