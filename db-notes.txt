@@ -1,0 +1,7 @@
+- install oracle frm website
+- install 
+- set password (root)
+- c:> sqlplus
+- sql> enter user-name: system
+- sql> enter user-password: root
+- sql> alter session set container=xepdb1;
