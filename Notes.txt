@@ -30,7 +30,8 @@ Lecture 6: Component Rendering and page Rendering
 Lecture 7 : Oracle/Maria DB installation - installation  oracle (U: system, p: root)
 Lecture 8: conditional Component view and data listing.
 Lecture 9: Component designing top to bottom and buttons play 
-Lecture 10: 
+Lecture 10: Promise concept, and same things with without promise.
+Lecture 11: Express init and call placements API, promise, fetch and there uses.
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -40,6 +41,12 @@ connection = await oracle.getConnection({
     password: "hr",
     connectionString: "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=xepdb1)))"
 });
+or
+const connectionString = {
+        "user":"hr", 
+        "password":'hr', 
+        "connectionString":"//localhost:1521/xepdb1"
+    };
 
 connection string might be like sqlplus hr/hr@//localhost:1521/xepdb1
 -----------------------------------------------------------------------
@@ -56,3 +63,24 @@ bobby take some time to prapare car (take long time )
 then he will deliver to given address of amit. 
 
 in mean time ankit can perform any task. 
+Amit needs to provide 2 info 1 which car he want and 2nd where to deliver 
+---
+Search: 
+What is Asyncronos Call
+Async/await programming 
+
+------
+When your server is on different port and client is on different port then 
+we will get error
+access to fetch at URL has been blocked by CORS policies. 
+CORS policies means : 
+Same Origin Policy : means application source and will send and recieve the request. 
+but when source and reciver are different then CORS Error will occur. 
+to avoid this policy we will use proxy as of now 
+/*
+Access to fetch at 'http://localhost:5050/placements' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+*/
+// it means in place of not Actual
+in package.json 
+at last 
+"proxy":"http://localhost:5050"
