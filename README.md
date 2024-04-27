@@ -9,4 +9,6 @@ Lecture 3: Passing values between the components (* V IMP Lecture)
 
 Lecture 4: Data passing from one component to other, search in the list of students and assignment
 
-Lecture 5: 
+Lecture 5: React Hooks (state)
+
+Lecture 6: Component Rendering and page Rendering
