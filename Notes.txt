@@ -32,6 +32,8 @@ Lecture 8: conditional Component view and data listing.
 Lecture 9: Component designing top to bottom and buttons play 
 Lecture 10: Promise concept, and same things with without promise.
 Lecture 11: Express init and call placements API, promise, fetch and there uses.
+Lecture 12: promise concept, how to fetch data.
+Lecture 13: Assignment for student data
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -84,3 +86,28 @@ Access to fetch at 'http://localhost:5050/placements' from origin 'http://localh
 in package.json 
 at last 
 "proxy":"http://localhost:5050"
+
+- L12
+-----
+When rerendeing happend then why const [title, setTitle] = React.useState("some data") is not rerending? 
+due to React.useState -> some database created in backend in that "some data" ki entry ho jati he 
+when is rerender fiest check in backend in ds , but in ds already setTitle is availe and us k againest 
+if values is changed then this line will not execute. that means portion will execute but that valye will not update. 
+
+now i want whenever state change we have to call function , how? 
+
+React.useEffect(()=>{}, []) // New hook 
+                ( functionality, [list of elements on which we want to execute functionality on change])
+                if passes [] then it will execute only once. 
+
+Initially it will execute only one. 
+
+React.useEffect(()=>{
+    getPlacements().then((emps)=>{
+        setEmployees(emps);
+    });
+},[]);
+
+Create table in DB
+create table student ( id  int primary key, name char(25) not null, job_type char(1) not null, company char(25) not null, 
+salary int not null, salary_type char(1) not null)
