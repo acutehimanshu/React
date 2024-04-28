@@ -5,7 +5,7 @@ const getStudents = ()=>{
     });
     return promise;
 }
-const AppExample16 = ()=>{
+const Assignment01_L14 = ()=>{
     const [activeMode, setActiveMode] = React.useState('view');
     const [Students, setStudents] = React.useState([]);
     React.useEffect(()=>{
@@ -188,4 +188,4 @@ const StudentsAddComponent = ()=>{
         </div>
     )
 }
-export default AppExample16
+export default Assignment01_L14
