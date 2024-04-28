@@ -14,3 +14,5 @@ Lecture 5: React Hooks (state)
 Lecture 6: Component Rendering and page Rendering
 
 Lecture 7: Oracle / Maria Db Installation (system, root)
+
+Lecture 8: conditional Component view and data listing.
