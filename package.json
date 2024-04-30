@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "electronics": "file:electronics",
     "express": "^4.19.2",
     "npx": "^10.2.2",
     "oracledb": "^6.4.0"

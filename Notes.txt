@@ -35,6 +35,7 @@ Lecture 11: Express init and call placements API, promise, fetch and there uses.
 Lecture 12: promise concept, how to fetch data.
 Lecture 13: Assignment for student data
 Lecture 14: State with form input methods. 
+Lecture 15: package manager, Post method and insert data in database. 
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -112,3 +113,28 @@ React.useEffect(()=>{
 Create table in DB
 create table student ( id  int primary key, name char(25) not null, job_type char(1) not null, company char(25) not null, 
 salary int not null, salary_type char(1) not null)
+
+L15
+
+const xyz = require('module-name); // that module name should be same as name we pass with export keyword. 
+that will return a address of the function which will stores in xyz. 
+
+const app = xyz();
+now if we call xyz(); then that function will run and assign returned valiue to app.  
+
+Initialise package 
+npm init -y       -  in the local System
+npm init          - it will be global
+
+How to use 
+go to file directory > npm install --save ../moduleName
+
+on browser we hit www.something.com 
+then it will generate some long string that contain all info about the call like method type, status, data, heades and so on like 
+--------------     
+GET URL 200 OK ...
+...
+..
+
+Data
+-------------- to parse that data we need body parser  We have 2 - 1 query string and 2 - QS  
