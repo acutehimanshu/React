@@ -19,7 +19,7 @@ const getStudents = ()=>{
     });
     return promise;
 }
-const AppExample16 = ()=>{
+const Assignment01_L16 = ()=>{
     const [activeMode, setActiveMode] = React.useState('view');
     const [Students, setStudents] = React.useState([]);
     React.useEffect(()=>{
@@ -30,9 +30,12 @@ const AppExample16 = ()=>{
     const onToolBarItemSelected = (item)=>{
         setActiveMode(item)
     }
-    const afterSubmission = (status)=>{
+    const afterSubmission = (status, student)=>{
         if(status == 'view'){
-            setActiveMode('view');
+            getStudents().then((s)=>{
+                setStudents(s)
+                setActiveMode('view');
+            });
         }else{
             setActiveMode('add');
         }   
@@ -181,20 +184,21 @@ const StudentsAddComponent = ({afterSubmission})=>{
             return; 
         }
         console.log(id); console.log(name); console.log(company); console.log(salary); console.log(salaryType); console.log(placementType);
-        addStudent({
+        var std = {
             id : id,
             name : name,
             company : company,
             salary : salary,
             salaryType : salaryType,
             placementType  : placementType,
-        }).then((responseJson)=>{
+        };
+        addStudent(std).then((responseJson)=>{
             if(responseJson.success===false){
                 setMessageError(responseJson.message);
                 return;
             }else{
                 alert("added");
-                afterSubmission('view');
+                afterSubmission('view', std);
             }
         });
 
@@ -235,4 +239,4 @@ const StudentsAddComponent = ({afterSubmission})=>{
         </div>
     )
 }
-export default AppExample16
+export default Assignment01_L16
