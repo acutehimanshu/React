@@ -4,11 +4,11 @@ const oracle = require('oracledb');
 const app = express();
 const urlEncodedBodyparser = bodyParser.urlencoded({extended:false}); // replace spcial characters with code
 class Student {
-    constructor(id, name, palcementType, company, salary){
+    constructor(id, name, placementType, company, salary){
         this.id = id; 
         this.name = name;
         this.company = company;
-        this.palcementType = palcementType;
+        this.placementType = placementType;
         this.salary = salary;
     }
 
@@ -21,8 +21,8 @@ class Student {
     getCompany(){
         return this.company; 
     }
-    getPalcementType(){
-        return this.palcementType; 
+    getPlacementType(){
+        return this.placementType; 
     }
     getSalary(){
         return this.salary; 

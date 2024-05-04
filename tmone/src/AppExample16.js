@@ -1,4 +1,5 @@
 import React from "react";
+import progress from "./loader.gif"
 const addStudent = (student)=>{
     var promise = new Promise((resolve)=>{
         const bodyString=`id=${student.id}&name=${encodeURIComponent(student.name)}&company=${encodeURIComponent(student.company)}&salary=${student.salary}&salaryType=${student.salaryType}&jobType=${student.placementType}`;
@@ -30,12 +31,23 @@ const AppExample16 = ()=>{
     const onToolBarItemSelected = (item)=>{
         setActiveMode(item)
     }
-    const afterSubmission = (status)=>{
-        if(status == 'view'){
-            setActiveMode('view');
+    const onStudentAdded = (student)=>{
+        if(student.placementType == "F") {student.placementType = "Full time";}
+        if(student.placementType == "I") {student.placementType = "Internship";}
+        if(student.salaryType == 'Y'){
+            if(student.salary > 99000){
+                student.salary = (student.salary/100000)+" Lakh Per Annum";
+            }else{
+                student.salary = (student.salary)+" Per Annum";
+            }
         }else{
-            setActiveMode('add');
-        }   
+            if(student.salary > 99000){
+                student.salary = (student.salary/100000)+" Lakh Per Month";
+            }else{
+                student.salary = (student.salary)+" Per Month";
+            }
+        }
+        Students.push(student);
     }
 
     return(
@@ -43,7 +55,7 @@ const AppExample16 = ()=>{
             <h1>Thinking Machines</h1>
             <ToolBar mode={activeMode} onItemSelected={onToolBarItemSelected} />
             {activeMode === 'view' && <StudentsListComponent Students={Students} />}
-            {activeMode === 'add' && <StudentsAddComponent afterSubmission={afterSubmission} />}
+            {activeMode === 'add' && <StudentsAddComponent onStudentAdded={onStudentAdded} />}
         </div>
     )
 }
@@ -73,7 +85,7 @@ const StudentsListComponent = ({Students})=>{
                             Name: {student.name}<br></br>
                             company: {student.company}<br></br>
                             package: {student.salary}<br></br>
-                            Job Type: {student.palcementType}<br></br>
+                            Job Type: {student.placementType}<br></br>
                             <hr/>
                         </div>
                     )
@@ -83,7 +95,8 @@ const StudentsListComponent = ({Students})=>{
     )
 }
 
-const StudentsAddComponent = ({afterSubmission})=>{
+const StudentsAddComponent = ({onStudentAdded})=>{
+    const [displayWhat, setDiaplsyWhat] = React.useState('formSection');
     const [id,setId] = React.useState(0);
     const [name,setName] = React.useState("");
     const [company,setCompany] = React.useState("");
@@ -158,9 +171,19 @@ const StudentsAddComponent = ({afterSubmission})=>{
         setSalaryError('');
         setMessageError('');
     }
+    const clearForm = ()=>{
+        setId('0');
+        setName('');
+        setCompany('');
+        setSalary('0');
+        setSalaryType('F');
+        setFulltimeChecked('checked');
+        setInternChecked('');
+        setPlacementType('F');
+    }
     const onClickHandler = ()=>{
         clearAllErrors();
-        var hasError = false;
+        let hasError = false;
         if(id == '' || id<=0 ) {
             setIdError(" * ");
             hasError = true;
@@ -177,28 +200,46 @@ const StudentsAddComponent = ({afterSubmission})=>{
             setSalaryError(" * ");
             hasError = true;
         }
-        if(hasError == true){
+        if(hasError === true){
             return; 
         }
         console.log(id); console.log(name); console.log(company); console.log(salary); console.log(salaryType); console.log(placementType);
-        addStudent({
+        let std = {
             id : id,
             name : name,
             company : company,
             salary : salary,
             salaryType : salaryType,
             placementType  : placementType,
-        }).then((responseJson)=>{
-            if(responseJson.success===false){
-                setMessageError(responseJson.message);
-                return;
+        };
+        setDiaplsyWhat('processing');
+        addStudent(std).then((responseJson)=>{
+            if(responseJson.success === true){
+                onStudentAdded(std);
+                clearForm();
+                setDiaplsyWhat('addMoreSection');
             }else{
-                alert("added");
-                afterSubmission('view');
+                setMessageError(responseJson.message);
+                setDiaplsyWhat("formsection");
             }
         });
 
     }
+    
+    if(displayWhat == 'addMoreSection') return (
+        <div>
+            Add more? <br/>
+            <button type="text">Yes</button> &nbsp;
+            <button type="text">No</button> 
+        </div>
+    )
+
+    if(displayWhat == 'processing') return (
+        <div>
+            <img src={progress}/>
+        </div>
+    )
+    if(displayWhat ==='formSection'){
     return (
         <div>
             <h3>Add New student</h3>
@@ -228,11 +269,12 @@ const StudentsAddComponent = ({afterSubmission})=>{
             <br>
             </br>
             Placement type: 
-            <input type="radio" value={'F'} id="fulltime" name="placementType" checked={fulltimeChecked}  onChange={placementTypeChanged} /> Fulltime 
-            <input type="radio" value="I" id="internship" name="placementType" checked={internChecked} onChange={placementTypeChanged} /> Internship
+            <input type="radio" value={'F'} id="fulltime" name="placementType" checked={fulltimeChecked} onChange={placementTypeChanged} /> Fulltime 
+            <input type="radio" value={"I"} id="internship" name="placementType" checked={internChecked} onChange={placementTypeChanged} /> Internship
             <br/>
             <button type="button" onClick={onClickHandler}>Add</button>
         </div>
     )
+    }
 }
 export default AppExample16
