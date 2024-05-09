@@ -36,7 +36,7 @@ app.get("/placements", async function(request, response){
         "connectionString":"//localhost:1521/xepdb1"
     }; 
     const connection = await oracle.getConnection(connectionString);
-    let resultSet = await connection.execute('Select * FROM students');
+    let resultSet = await connection.execute('Select * FROM students order by id');
     resultSet = resultSet.rows;
     const students = [];
     resultSet.forEach((row)=>{
