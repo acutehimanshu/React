@@ -40,6 +40,7 @@ Lecture 16: post method from Form to database.
 Lecture 17: Add Student Form functionality
 Lecture 18: Assignment code and suggestion
 Lecture 19: Assignment Suggestions
+Lecture 20: Font Awesome introduction
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -142,3 +143,10 @@ GET URL 200 OK ...
 
 Data
 -------------- to parse that data we need body parser  We have 2 - 1 query string and 2 - QS  
+----L20
+We will use Font awesome 
+
+URL
+how to use react : https://docs.fontawesome.com/v5/web/use-with/react/
+solid font : https://fontawesome.com/v6/icons?o=r&m=free&s=solid
+
