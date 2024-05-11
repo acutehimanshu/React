@@ -41,6 +41,7 @@ Lecture 17: Add Student Form functionality
 Lecture 18: Assignment code and suggestion
 Lecture 19: Assignment Suggestions
 Lecture 20: Font Awesome introduction
+Lecture 21: Reducer , Pure function , Spread Operator
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -150,3 +151,36 @@ URL
 how to use react : https://docs.fontawesome.com/v5/web/use-with/react/
 solid font : https://fontawesome.com/v6/icons?o=r&m=free&s=solid
 
+L21: Reducer
+
+Reduce in terms of Javascript
+whenn you call reducer: 
+array.reduce()  // it may take 2 arguments 
+we are passing omly one as of now
+array.reduce((a,b,c,d)=>{
+    // cycle 1 || if we are loading Initially
+    a -> first element 
+    b -> 2nd element 
+    c-> index of 2nd element 
+    d - array on which we are processing 
+    // cycle 2 to end. 
+    a-> whateer cycle one will return will be the 1st value for this cycle 
+    b -> 2nd element 
+    c-> index of 2nd element 
+    d - array on which we are processing 
+    .. 
+});
+// it will execute.  length - 1 times. 
+accumulator 
+
+What is Pure function? 
+for a perticaul input output is always same. and should not have any side effets. (any ds or variable should not affect out of this function from this function. )
+
+const reduce3=(obj, action)=>{
+    var m = {
+        value: obj.value
+    }
+    if(action == 'UP') m.value++;
+    if(action == 'DOWN') m.value--;
+    return m;
+}
