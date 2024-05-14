@@ -42,6 +42,7 @@ Lecture 18: Assignment code and suggestion
 Lecture 19: Assignment Suggestions
 Lecture 20: Font Awesome introduction
 Lecture 21: Reducer , Pure function , Spread Operator
+Lecture 22: Reducer method of React (React.useReducer)
 ------------------------------------------------------------------
 
 ---------------------------------------------------------------------
@@ -184,3 +185,18 @@ const reduce3=(obj, action)=>{
     if(action == 'DOWN') m.value--;
     return m;
 }
+
+L22
+---
+listOfItems = array of data 
+const [inventory, dispatchTransaction] = React.useReducer(transactionReducer, listOfItems);
+
+listOfItems data will be assigned to inventory Variable;
+
+when you called the dispatchTransaction 
+then transactionReducer will be triggered 
+
+Whatever arguments you will pass to dispatchTransaction will be 2nd parameter for transactionReducer
+1st parameter will be the inventory. 
+for Clearification
+Check App Example 18 and notes from Lecture 22
